@@ -3,6 +3,8 @@ package ehu.isad.utils;
 import com.google.gson.Gson;
 import ehu.isad.model.ProbaModel;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.awt.print.Book;
 import java.io.*;
 import java.net.URL;
@@ -36,5 +38,17 @@ public class Utils {
         // process if needed
         Gson gson = new Gson();
         return gson.fromJson(inputLine, ProbaModel.class);
+    }
+
+    private void saveImage(String izena){
+        //Emandako izena duen irudia zerbitzarira eskatzen da, eta sisteman gordetzen da
+        BufferedImage image;
+        try{
+            URL url =new URL("website.com"+izena+"/foto.png");
+            image = ImageIO.read(url);
+            ImageIO.write(image, "png", new File(Utils.getProperties().getProperty("pathToImages")+izena+".png"));
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 }

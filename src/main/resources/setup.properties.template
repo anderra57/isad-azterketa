@@ -1,6 +1,10 @@
+# MySQL
 dbname=
 user=
 password=
 useSSL=FALSE
 serverTimezone=Europe/Madrid
+allowPublicKeyRetrieval=true
+# SQLite
+pathToDB=
 pathToImages=
